@@ -48,20 +48,20 @@ const Campuses = sequelize.define("campuses", {
     validate: {
       notEmpty: true,
     },
-    imgURL: {
-      type: Sequelize.STRING,
-      allowNull: true,
+  },
+  imgURL: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  address: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
     },
-    address: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    description: {
-      type: Sequelize.STRING,
-    },
+  },
+  description: {
+    type: Sequelize.STRING,
   },
 });
 
@@ -127,14 +127,14 @@ const seed = async () => {
 };
 
 //routes
-app.get("/students", async (req, res, next) => {
+app.get("/api/students", async (req, res, next) => {
   try {
     res.send(await Students.findAll());
   } catch (ex) {
     next(ex);
   }
 });
-app.get("/campuses", async (req, res, next) => {
+app.get("/api/campuses", async (req, res, next) => {
   try {
     res.send(await Campuses.findAll());
   } catch (ex) {

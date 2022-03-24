@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getCampus } from "./store";
+import { Link } from "react-router-dom";
 
 class CampusList extends React.Component {
   async componentDidMount() {
@@ -9,7 +10,11 @@ class CampusList extends React.Component {
   render() {
     console.log("CL redner state", this.props.state);
     const CampusEls = this.props.state.map((campus) => {
-      return <div key={campus.id}>{campus.name}</div>;
+      return (
+        <div key={campus.id}>
+          <Link to={`campuses/${campus.id}`}>{campus.name}</Link>
+        </div>
+      );
     });
     return (
       <div>

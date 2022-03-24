@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getStudents } from "./store";
+import { Link } from "react-router-dom";
 
 class StudentList extends React.Component {
   async componentDidMount() {
@@ -11,7 +12,9 @@ class StudentList extends React.Component {
     const StudentEls = this.props.state.map((student) => {
       return (
         <div key={student.id}>
-          {student.firstName} {student.lastName}
+          <Link to={`/students/${student.id}`}>
+            {student.firstName} {student.lastName}
+          </Link>
         </div>
       );
     });

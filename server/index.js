@@ -119,7 +119,7 @@ const seed = async () => {
     gpa: 3.9,
   });
   const Erin = await Students.create({
-    firstName: "Erinn",
+    firstName: "Erin",
     lastName: "Jacobs",
     email: "ej@gmail.com",
     gpa: 3.5,
@@ -141,6 +141,15 @@ app.get("/api/campus", async (req, res, next) => {
     next(ex);
   }
 });
+
+// app.get("/api/students/:id", async (req, res, next) => {
+//   try {
+//     const studentId = req.params.id;
+//     res.send(Students.findByPk(studentId));
+//   } catch (ex) {
+//     next(ex);
+//   }
+// });
 
 const init = async () => {
   await sequelize.sync({ force: true });

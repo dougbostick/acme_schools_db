@@ -134,7 +134,7 @@ app.get("/api/students", async (req, res, next) => {
     next(ex);
   }
 });
-app.get("/api/campuses", async (req, res, next) => {
+app.get("/api/campus", async (req, res, next) => {
   try {
     res.send(await Campuses.findAll());
   } catch (ex) {

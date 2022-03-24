@@ -7,7 +7,7 @@ export const getStudents = () => {
     try {
       const response = await axios.get("/api/students");
       const data = response.data;
-      console.log("thunk response", data);
+      console.log("student thunk response", data);
       store.dispatch({ type: "STUDENTS", students: data });
     } catch (err) {
       console.log(err);
@@ -15,15 +15,29 @@ export const getStudents = () => {
   };
 };
 
-const initialState = { students: [], campuses: [] };
+export const getCampus = () => {
+  return async () => {
+    try {
+      const response = await axios.get("/api/campus");
+      const data = response.data;
+      console.log("campus thunk", data);
+      store.dispatch({ type: "CAMPUS", campus: data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+const initialState = { students: [], campus: [] };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "STUDENTS":
-      state = { students: action.students };
-      console.log("redux state", state);
+      state = { ...state, students: action.students };
+      console.log("studnt case state", state);
       return state;
-    case "CAMPUSES":
-      state = { campuses: action.campuses };
+    case "CAMPUS":
+      state = { ...state, campus: action.campus };
+      console.log("campus case state", state);
       return state;
   }
   return state;

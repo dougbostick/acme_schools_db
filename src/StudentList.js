@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 
 class StudentList extends React.Component {
   async componentDidMount() {
-    this.props.fetchStudents();
+    if (!this.props.loaded) {
+      this.props.fetchStudents();
+    }
   }
   render() {
     console.log("state", this.props.state);
-    const StudentEls = this.props.state.map((student) => {
+    const StudentEls = this.props.students.map((student) => {
       return (
         <div key={student.id}>
           <Link to={`/students/${student.id}`}>
@@ -29,7 +31,8 @@ class StudentList extends React.Component {
 
 const mapState = (reduxState) => {
   return {
-    state: reduxState.students,
+    students: reduxState.students,
+    loaded: reduxState.loadedStudents,
   };
 };
 

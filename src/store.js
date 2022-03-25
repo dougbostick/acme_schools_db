@@ -28,15 +28,20 @@ export const getCampus = () => {
   };
 };
 
-const initialState = { students: [], campus: [] };
+const initialState = {
+  students: [],
+  campus: [],
+  loadedStudents: false,
+  loadedCampus: false,
+};
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "STUDENTS":
-      state = { ...state, students: action.students };
+      state = { ...state, students: action.students, loadedStudents: true };
       console.log("studnt case state", state);
       return state;
     case "CAMPUS":
-      state = { ...state, campus: action.campus };
+      state = { ...state, campus: action.campus, loadedCampus: true };
       console.log("campus case state", state);
       return state;
   }

@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 
 class CampusList extends React.Component {
   async componentDidMount() {
-    this.props.fetchCampus();
+    if (!this.props.loaded) {
+      this.props.fetchCampus();
+    }
   }
   render() {
     console.log("CL redner state", this.props.state);
-    const CampusEls = this.props.state.map((campus) => {
+    const CampusEls = this.props.campus.map((campus) => {
       return (
         <div key={campus.id}>
           <Link to={`campuses/${campus.id}`}>{campus.name}</Link>
@@ -28,7 +30,8 @@ class CampusList extends React.Component {
 const mapState = (reduxState) => {
   console.log("CL map state", reduxState);
   return {
-    state: reduxState.campus,
+    campus: reduxState.campus,
+    loaded: reduxState.loadedCampus,
   };
 };
 

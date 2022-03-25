@@ -93,36 +93,42 @@ const seed = async () => {
     lastName: "Jackson",
     email: "pj@gmail.com",
     gpa: 3.4,
+    campusId: 3,
   });
   const Jason = await Students.create({
     firstName: "Jason",
     lastName: "Murphy",
     email: "jm@gmail.com",
     gpa: 3.2,
+    campusId: 3,
   });
   const Lauren = await Students.create({
     firstName: "Lauren",
     lastName: "Jones",
     email: "lj@gmail.com",
     gpa: 3.7,
+    campusId: 2,
   });
   const Carol = await Students.create({
     firstName: "Carol",
     lastName: "Hines",
     email: "ch@gmail.com",
     gpa: 2.7,
+    campusId: 1,
   });
   const Anthony = await Students.create({
     firstName: "Anthony",
     lastName: "Bai",
     email: "ab@gmail.com",
     gpa: 3.9,
+    campusId: 1,
   });
   const Erin = await Students.create({
     firstName: "Erin",
     lastName: "Jacobs",
     email: "ej@gmail.com",
     gpa: 3.5,
+    campusId: 2,
   });
 };
 

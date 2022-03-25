@@ -18,11 +18,11 @@ export class StudentDetails extends React.Component {
     if (!this.props.loadedCampus) {
       await this.props.fetchCampus();
     }
-    console.log("SD state", this.props.students);
+    // console.log("SD state", this.props.students);
     const student = this.props.students.find(
       (student) => student.id === parseInt(this.props.match.params.id)
     );
-    const campus = this.props.campus.find(
+    const campus = this.props.campus.filter(
       (campus) => campus.id === parseInt(this.props.match.params.id)
     );
     this.setState({ student, campus });
@@ -30,8 +30,8 @@ export class StudentDetails extends React.Component {
 
   render() {
     //console.log("route props", this.props.match.params.id);
-    const { student } = this.state;
-    const { campus } = this.state;
+    const { student, campus } = this.state;
+    // const { campus } = this.state;
     console.log("SD local state", this.state);
     return (
       <div>

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getStudents } from "./store";
 import { Link } from "react-router-dom";
+import { ConnectedSF } from "./StudentForm";
 
 class StudentList extends React.Component {
   async componentDidMount() {
@@ -24,6 +25,7 @@ class StudentList extends React.Component {
       <div>
         <h1>Students</h1>
         {StudentEls}
+        <ConnectedSF />
       </div>
     );
   }

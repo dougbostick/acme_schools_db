@@ -41,6 +41,7 @@ export class StudentDetails extends React.Component {
         <div>email: {student.email}</div>
         <div>GPA: {student.gpa}</div>
         <div>Campus: {campus.name}</div>
+        <div>{student.imageURL}</div>
 
         <Link to="/"> Back to Home </Link>
       </div>

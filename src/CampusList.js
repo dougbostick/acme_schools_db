@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getCampus } from "./store";
 import { Link } from "react-router-dom";
+import { ConnectedCF } from "./CampusForm";
 
 class CampusList extends React.Component {
   async componentDidMount() {
@@ -22,6 +23,7 @@ class CampusList extends React.Component {
       <div>
         <h1>Campuses</h1>
         {CampusEls}
+        <ConnectedCF />
       </div>
     );
   }

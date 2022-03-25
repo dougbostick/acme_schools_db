@@ -5,6 +5,7 @@ const app = express();
 
 // static middleware
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));

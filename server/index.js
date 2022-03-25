@@ -29,7 +29,7 @@ const Students = sequelize.define("students", {
       isEmail: true,
     },
   },
-  imageURl: {
+  imageURL: {
     type: Sequelize.STRING,
   },
   gpa: {
@@ -93,6 +93,7 @@ const seed = async () => {
     lastName: "Jackson",
     email: "pj@gmail.com",
     gpa: 3.4,
+    imageURL: "/dist/phil.jpeg",
     campusId: 3,
   });
   const Jason = await Students.create({
@@ -148,14 +149,37 @@ app.get("/api/campus", async (req, res, next) => {
   }
 });
 
-// app.get("/api/students/:id", async (req, res, next) => {
-//   try {
-//     const studentId = req.params.id;
-//     res.send(Students.findByPk(studentId));
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
+app.post("/api/campus", async (req, res, next) => {
+  console.log("app.post req.body", req.body);
+  const name = req.body.name;
+  const address = req.body.address;
+  try {
+    const newCampus = await Campuses.create({
+      name,
+      address,
+    });
+    console.log("app.post req.body", req.body);
+    res.status(201).send(newCampus);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.post("/api/students", async (req, res, next) => {
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  try {
+    const newStudent = await Students.create({
+      firstName,
+      lastName,
+      email,
+    });
+    res.status(201).send(newStudent);
+  } catch (ex) {
+    next(ex);
+  }
+});
 
 const init = async () => {
   await sequelize.sync({ force: true });

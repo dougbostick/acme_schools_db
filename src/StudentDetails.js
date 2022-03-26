@@ -22,8 +22,8 @@ export class StudentDetails extends React.Component {
     const student = this.props.students.find(
       (student) => student.id === parseInt(this.props.match.params.id)
     );
-    const campus = this.props.campus.filter(
-      (campus) => campus.id === parseInt(this.props.match.params.id)
+    const campus = this.props.campus.find(
+      (campus) => campus.id === student.campusId
     );
     this.setState({ student, campus });
   }
@@ -33,14 +33,23 @@ export class StudentDetails extends React.Component {
     const { student, campus } = this.state;
     // const { campus } = this.state;
     console.log("SD local state", this.state);
+
     return (
       <div>
         <h1>Student Details</h1>
         <div>First Name: {student.firstName}</div>
         <div>Last Name: {student.lastName}</div>
         <div>email: {student.email}</div>
-        <div>GPA: {student.gpa}</div>
-        <div>Campus: {campus.name}</div>
+        <div>GPA: {student.gpa ? student.gpa : "no gpa found"}</div>
+        <div>
+          Campus:{" "}
+          {campus ? (
+            <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
+          ) : (
+            " not enrolled in one of our fantastic campuses"
+          )}
+        </div>
+
         <div>{student.imageURL}</div>
 
         <Link to="/"> Back to Home </Link>

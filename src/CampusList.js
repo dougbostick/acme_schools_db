@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getCampus } from "./store";
+import { getCampus, deleteCampus } from "./store";
 import { Link } from "react-router-dom";
 import { ConnectedCF } from "./CampusForm";
+// import axios from "axios";
 
 class CampusList extends React.Component {
   async componentDidMount() {
@@ -10,12 +11,14 @@ class CampusList extends React.Component {
       this.props.fetchCampus();
     }
   }
+
   render() {
     console.log("CL redner state", this.props.state);
     const CampusEls = this.props.campus.map((campus) => {
       return (
         <div key={campus.id}>
           <Link to={`campuses/${campus.id}`}>{campus.name}</Link>
+          <button onClick={() => this.props.deleteCampus(campus.id)}>x</button>
         </div>
       );
     });
@@ -40,6 +43,7 @@ const mapState = (reduxState) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchCampus: () => dispatch(getCampus()),
+    deleteCampus: (id) => dispatch(deleteCampus(id)),
   };
 };
 

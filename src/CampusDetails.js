@@ -43,12 +43,14 @@ class CampusDetails extends React.Component {
         <div>{campus.description}</div>
         <div>
           Students who attend {campus.name}:
-          {students ? (
+          {students.length > 0 ? (
             <div>
               {students.map((student) => {
                 return (
                   <div key={student.id}>
-                    {student.firstName} {student.lastName}
+                    <Link to={`/students/${student.id}`}>
+                      {student.firstName} {student.lastName}
+                    </Link>
                   </div>
                 );
               })}

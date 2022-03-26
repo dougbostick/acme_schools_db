@@ -13,8 +13,8 @@ render(
   <Provider store={store}>
     <Router>
       <Nav />
-      <Route exact path="/students/:id" component={ConnectedSD} />
-      <Route exact path="/campuses/:id" component={ConnectedCD} />
+      <Route path="/students/:id" component={ConnectedSD} />
+      <Route path="/campuses/:id" component={ConnectedCD} />
       <Route exact path="/campuses" component={ConnectedCampus} />
       <Route exact path="/students" component={ConnectedStudent} />
     </Router>

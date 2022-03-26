@@ -67,6 +67,13 @@ export const deleteCampus = (id) => {
   };
 };
 
+export const deleteStudent = (id) => {
+  return async () => {
+    await axios.delete(`/api/students/${id}`);
+    store.dispatch({ type: "DELETE_STUDENT", id });
+  };
+};
+
 const initialState = {
   students: [],
   campus: [],
@@ -91,8 +98,16 @@ const reducer = (state = initialState, action) => {
       state = { ...state, students: [...state.students, action.data] };
       return state;
     case "DELETE_CAMPUS":
-      const filtered = state.campus.filter((campus) => campus.id !== action.id);
-      state = { ...state, campus: filtered };
+      const filteredCampus = state.campus.filter(
+        (campus) => campus.id !== action.id
+      );
+      state = { ...state, campus: filteredCampus };
+      return state;
+    case "DELETE_STUDENT":
+      const filteredStudents = state.students.filter(
+        (student) => student.id !== action.id
+      );
+      state = { ...state, students: filteredStudents };
       return state;
   }
   return state;

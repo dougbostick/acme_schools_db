@@ -182,9 +182,23 @@ app.post("/api/students", async (req, res, next) => {
 });
 
 app.delete("/api/campus/:id", async (req, res, next) => {
-  const target = await Campuses.findByPk(req.params.id);
-  target.destroy();
-  res.send(204);
+  try {
+    const target = await Campuses.findByPk(req.params.id);
+    target.destroy();
+    res.send(204);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.delete("/api/students/:id", async (req, res, next) => {
+  try {
+    const target = await Students.findByPk(req.params.id);
+    target.destroy();
+    res.send(204);
+  } catch (ex) {
+    next(ex);
+  }
 });
 
 const init = async () => {

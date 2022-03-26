@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getStudents } from "./store";
+import { getStudents, deleteStudent } from "./store";
 import { Link } from "react-router-dom";
 import { ConnectedSF } from "./StudentForm";
 
@@ -18,6 +18,9 @@ class StudentList extends React.Component {
           <Link to={`/students/${student.id}`}>
             {student.firstName} {student.lastName}
           </Link>
+          <button onClick={() => this.props.deleteStudent(student.id)}>
+            x
+          </button>
         </div>
       );
     });
@@ -41,6 +44,7 @@ const mapState = (reduxState) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchStudents: () => dispatch(getStudents()),
+    deleteStudent: (id) => dispatch(deleteStudent(id)),
   };
 };
 

@@ -38,9 +38,11 @@ class CampusDetails extends React.Component {
     return (
       <div>
         <h1>Campus Details</h1>
+        <img src={campus.imgURL}></img>
         <div>Campus: {campus.name}</div>
         <div>Address: {campus.address}</div>
         <div>{campus.description}</div>
+
         <div>
           Students who attend {campus.name}:
           {students.length > 0 ? (

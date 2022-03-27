@@ -72,19 +72,22 @@ Students.belongsTo(Campuses);
 const seed = async () => {
   const FooU = await Campuses.create({
     name: "Foo University",
-    imgURL: null,
+    imgURL:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Sanders_theater_2009y.JPG/440px-Sanders_theater_2009y.JPG",
     address: "199 Foo BLVD, Fooville, USA",
     description: "super good school",
   });
   const BarS = await Campuses.create({
     name: "Bar State",
-    imgURL: null,
+    imgURL:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Old_campus.jpg/1600px-Old_campus.jpg",
     address: "236 Bar Road, Somewhere, USA",
     description: "super awesome school",
   });
   const BazT = await Campuses.create({
     name: "Baz Tech",
-    imgURL: null,
+    imgURL:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Universal-Islands-of-Adventure-Harry-Potter-Castle-9182.jpg/440px-Universal-Islands-of-Adventure-Harry-Potter-Castle-9182.jpg",
     address: "9892 Baz Square, Nowhere, USA",
     description: "honestly mediocre school",
   });
@@ -93,7 +96,8 @@ const seed = async () => {
     lastName: "Jackson",
     email: "pj@gmail.com",
     gpa: 3.4,
-    imageURL: "/dist/phil.jpeg",
+    imageURL:
+      "https://upload.wikimedia.org/wikipedia/en/3/30/Jon_Snow_Season_8.png",
     campusId: 3,
   });
   const Jason = await Students.create({
@@ -101,6 +105,8 @@ const seed = async () => {
     lastName: "Murphy",
     email: "jm@gmail.com",
     gpa: 3.2,
+    imageURL:
+      "https://upload.wikimedia.org/wikipedia/en/5/52/Ned_Stark-Sean_Bean.jpg",
     campusId: 3,
   });
   const Lauren = await Students.create({
@@ -108,6 +114,8 @@ const seed = async () => {
     lastName: "Jones",
     email: "lj@gmail.com",
     gpa: 3.7,
+    imageURL:
+      "https://upload.wikimedia.org/wikipedia/en/0/0d/Daenerys_Targaryen_with_Dragon-Emilia_Clarke.jpg",
     campusId: 2,
   });
   const Carol = await Students.create({
@@ -115,6 +123,8 @@ const seed = async () => {
     lastName: "Hines",
     email: "ch@gmail.com",
     gpa: 2.7,
+    imageURL:
+      "https://upload.wikimedia.org/wikipedia/en/7/74/SophieTurnerasSansaStark.jpg",
     campusId: 1,
   });
   const Anthony = await Students.create({
@@ -122,6 +132,8 @@ const seed = async () => {
     lastName: "Bai",
     email: "ab@gmail.com",
     gpa: 3.9,
+    imageURL:
+      "https://upload.wikimedia.org/wikipedia/en/0/06/Robert_Baratheon_Profile_Mark_Addy.jpg",
     campusId: 1,
   });
   const Erin = await Students.create({
@@ -129,6 +141,8 @@ const seed = async () => {
     lastName: "Jacobs",
     email: "ej@gmail.com",
     gpa: 3.5,
+    imageURL:
+      "https://upload.wikimedia.org/wikipedia/en/3/39/Arya_Stark-Maisie_Williams.jpg",
     campusId: 2,
   });
 };
@@ -196,6 +210,15 @@ app.delete("/api/students/:id", async (req, res, next) => {
     const target = await Students.findByPk(req.params.id);
     target.destroy();
     res.send(204);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.put("/api/campus/:id", async (req, res, next) => {
+  try {
+    const updated = await Campuses.findByPk(req.params.id);
+    res.send(await updated.update(req.body));
   } catch (ex) {
     next(ex);
   }

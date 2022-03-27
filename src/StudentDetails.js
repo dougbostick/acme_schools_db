@@ -37,10 +37,12 @@ export class StudentDetails extends React.Component {
     return (
       <div>
         <h1>Student Details</h1>
+        <img src={student.imageURL}></img>
         <div>First Name: {student.firstName}</div>
         <div>Last Name: {student.lastName}</div>
         <div>email: {student.email}</div>
         <div>GPA: {student.gpa ? student.gpa : "no gpa found"}</div>
+
         <div>
           Campus:{" "}
           {campus ? (
@@ -49,8 +51,6 @@ export class StudentDetails extends React.Component {
             " not enrolled in one of our fantastic campuses"
           )}
         </div>
-
-        <div>{student.imageURL}</div>
 
         <Link to="/"> Back to Home </Link>
       </div>

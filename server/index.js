@@ -226,6 +226,17 @@ app.put("/api/campus/:id", async (req, res, next) => {
   }
 });
 
+app.put("/api/student/:id", async (req, res, next) => {
+  try {
+    console.log("req.params", req.params);
+    console.log("req.body", req.body);
+    const updated = await Students.findByPk(req.params.id * 1);
+    res.send(await updated.update(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 const init = async () => {
   await sequelize.sync({ force: true });
   console.log("syncd");

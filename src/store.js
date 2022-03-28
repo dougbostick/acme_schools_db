@@ -84,6 +84,15 @@ export const updateCampus = (campus, history) => {
   };
 };
 
+export const updateStudent = (student, history) => {
+  return async () => {
+    const response = await axios.put(`/api/student/${student.id}`, student);
+    const updated = response.data;
+    store.dispatch({ type: "UPDATE_STUDENT", updated });
+    history.push("/students");
+  };
+};
+
 const initialState = {
   students: [],
   campus: [],
@@ -124,6 +133,12 @@ const reducer = (state = initialState, action) => {
         campus.id === action.updated.id ? action.updated : campus
       );
       state = { ...state, campus: updatedCampus };
+      return state;
+    case "UPDATE_STUDENT":
+      const updatedStudent = state.students.map((student) =>
+        student.id === action.updated.id ? action.updated : student
+      );
+      state = { ...state, students: updatedStudent };
       return state;
   }
   return state;

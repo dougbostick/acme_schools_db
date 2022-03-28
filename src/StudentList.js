@@ -21,6 +21,7 @@ class StudentList extends React.Component {
           <button onClick={() => this.props.deleteStudent(student.id)}>
             x
           </button>
+          <Link to={`/students/${student.id}/update`}>Update</Link>
         </div>
       );
     });

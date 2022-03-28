@@ -9,6 +9,7 @@ import { Nav } from "./Nav";
 import { ConnectedSD } from "./StudentDetails";
 import { ConnectedCD } from "./CampusDetails";
 import { ConnectedCU } from "./UpdateCampus";
+import { ConnectedSU } from "./UpdateStudent";
 
 render(
   <Provider store={store}>
@@ -19,6 +20,7 @@ render(
       <Route exact path="/campuses" component={ConnectedCampus} />
       <Route exact path="/students" component={ConnectedStudent} />
       <Route exact path="/campuses/:id/update" component={ConnectedCU} />
+      <Route exact path="/students/:id/update" component={ConnectedSU} />
     </Router>
   </Provider>,
   document.querySelector("#root")

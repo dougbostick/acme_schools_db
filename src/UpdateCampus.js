@@ -69,7 +69,6 @@ const mapState = (reduxState, { match }) => {
 };
 const mapDispatch = (dispatch, { history }) => {
   return {
-    addCampus: (name, address) => dispatch(addCampus(name, address)),
     updateCampus: (campus) => dispatch(updateCampus(campus, history)),
     // fetchCampus: () => dispatch(getCampus()),
   };

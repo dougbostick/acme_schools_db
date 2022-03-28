@@ -19,6 +19,7 @@ class CampusList extends React.Component {
         <div key={campus.id}>
           <Link to={`campuses/${campus.id}`}>{campus.name}</Link>
           <button onClick={() => this.props.deleteCampus(campus.id)}>x</button>
+          <Link to={`campuses/${campus.id}/update`}>Update</Link>
         </div>
       );
     });

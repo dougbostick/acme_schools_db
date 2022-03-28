@@ -44,6 +44,20 @@ export const addCampus = (name, address) => {
   };
 };
 
+export const deleteCampus = (id) => {
+  return async () => {
+    await axios.delete(`/api/campus/${id}`);
+    store.dispatch({ type: "DELETE_CAMPUS", id });
+  };
+};
+
+export const deleteStudent = (id) => {
+  return async () => {
+    await axios.delete(`/api/students/${id}`);
+    store.dispatch({ type: "DELETE_STUDENT", id });
+  };
+};
+
 export const addStudent = (firstName, lastName, email) => {
   return async () => {
     try {
@@ -60,17 +74,13 @@ export const addStudent = (firstName, lastName, email) => {
   };
 };
 
-export const deleteCampus = (id) => {
-  return async () => {
-    await axios.delete(`/api/campus/${id}`);
-    store.dispatch({ type: "DELETE_CAMPUS", id });
-  };
-};
-
-export const deleteStudent = (id) => {
-  return async () => {
-    await axios.delete(`/api/students/${id}`);
-    store.dispatch({ type: "DELETE_STUDENT", id });
+export const updateCampus = (campus, history) => {
+  return async (dispatch) => {
+    const response = await axios.put(`/api/campus/${campus.id}`, campus);
+    const updated = response.data;
+    console.log("updated", updated);
+    store.dispatch({ type: "UPDATE_CAMPUS", updated });
+    history.push("/campuses");
   };
 };
 
@@ -108,6 +118,12 @@ const reducer = (state = initialState, action) => {
         (student) => student.id !== action.id
       );
       state = { ...state, students: filteredStudents };
+      return state;
+    case "UPDATE_CAMPUS":
+      const updatedCampus = state.campus.map((campus) =>
+        campus.id === action.updated.id ? action.updated : campus
+      );
+      state = { ...state, campus: updatedCampus };
       return state;
   }
   return state;

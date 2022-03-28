@@ -217,7 +217,9 @@ app.delete("/api/students/:id", async (req, res, next) => {
 
 app.put("/api/campus/:id", async (req, res, next) => {
   try {
-    const updated = await Campuses.findByPk(req.params.id);
+    console.log("req.params", req.params);
+    console.log("req.body", req.body);
+    const updated = await Campuses.findByPk(req.params.id * 1);
     res.send(await updated.update(req.body));
   } catch (ex) {
     next(ex);

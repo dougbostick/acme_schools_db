@@ -8,15 +8,17 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import { Nav } from "./Nav";
 import { ConnectedSD } from "./StudentDetails";
 import { ConnectedCD } from "./CampusDetails";
+import { ConnectedCU } from "./UpdateCampus";
 
 render(
   <Provider store={store}>
     <Router>
       <Nav />
-      <Route path="/students/:id" component={ConnectedSD} />
-      <Route path="/campuses/:id" component={ConnectedCD} />
+      <Route exact path="/students/:id" component={ConnectedSD} />
+      <Route exact path="/campuses/:id" component={ConnectedCD} />
       <Route exact path="/campuses" component={ConnectedCampus} />
       <Route exact path="/students" component={ConnectedStudent} />
+      <Route exact path="/campuses/:id/update" component={ConnectedCU} />
     </Router>
   </Provider>,
   document.querySelector("#root")

@@ -75,7 +75,7 @@ export const addStudent = (firstName, lastName, email) => {
 };
 
 export const updateCampus = (campus, history) => {
-  return async (dispatch) => {
+  return async () => {
     const response = await axios.put(`/api/campus/${campus.id}`, campus);
     const updated = response.data;
     console.log("updated", updated);
@@ -93,6 +93,18 @@ export const updateStudent = (student, history) => {
   };
 };
 
+export const unregister = (student, history) => {
+  return async () => {
+    const response = await axios.put(
+      `/api/student/unresgister/${student.id}`,
+      student
+    );
+    const unregistered = response.data;
+    console.log("unregistered", unregistered);
+    store.dispatch({ type: "UNREGISTER", unregistered });
+    //history.push(`${campus}`);
+  };
+};
 const initialState = {
   students: [],
   campus: [],
@@ -139,6 +151,13 @@ const reducer = (state = initialState, action) => {
         student.id === action.updated.id ? action.updated : student
       );
       state = { ...state, students: updatedStudent };
+      return state;
+    case "UNREGISTER":
+      const target = state.students.map((student) =>
+        student.id === action.unregistered.id ? action.unregistered : student
+      );
+      state = { ...state, students: target };
+      console.log("ungerister state", state);
       return state;
   }
   return state;

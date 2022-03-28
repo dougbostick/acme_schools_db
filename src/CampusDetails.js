@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getCampus, getStudents } from "./store";
+import { getCampus, getStudents, unregister } from "./store";
 
 class CampusDetails extends React.Component {
   constructor() {
@@ -28,6 +28,11 @@ class CampusDetails extends React.Component {
     console.log("students after map", students);
     this.setState({ campus, students });
   }
+
+  async unregister(student) {
+    console.log("student", student);
+    this.props.unregister({ ...student, campusId: null });
+  }
   render() {
     console.log("CD local state", this.state);
 
@@ -53,6 +58,9 @@ class CampusDetails extends React.Component {
                     <Link to={`/students/${student.id}`}>
                       {student.firstName} {student.lastName}
                     </Link>
+                    <button onClick={() => this.unregister(student)}>
+                      Unregister
+                    </button>
                   </div>
                 );
               })}
@@ -75,10 +83,11 @@ const mapState = (reduxState) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     fetchCampus: () => dispatch(getCampus()),
     fetchStudents: () => dispatch(getStudents()),
+    unregister: (student, campus) => dispatch(unregister(student, history)),
   };
 };
 

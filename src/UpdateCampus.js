@@ -1,5 +1,5 @@
 import React from "react";
-import { addCampus, updateCampus } from "./store";
+import { updateCampus } from "./store";
 import { connect } from "react-redux";
 
 class UpdateCampus extends React.Component {
@@ -70,7 +70,6 @@ const mapState = (reduxState, { match }) => {
 const mapDispatch = (dispatch, { history }) => {
   return {
     updateCampus: (campus) => dispatch(updateCampus(campus, history)),
-    // fetchCampus: () => dispatch(getCampus()),
   };
 };
 

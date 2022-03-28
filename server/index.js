@@ -155,6 +155,7 @@ app.get("/api/students", async (req, res, next) => {
     next(ex);
   }
 });
+
 app.get("/api/campus", async (req, res, next) => {
   try {
     res.send(await Campuses.findAll());
@@ -232,6 +233,18 @@ app.put("/api/student/:id", async (req, res, next) => {
     console.log("req.body", req.body);
     const updated = await Students.findByPk(req.params.id * 1);
     res.send(await updated.update(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.put("/api/student/unresgister/:id", async (req, res, next) => {
+  try {
+    const target = await Students.findByPk(req.params.id * 1);
+    // const updated = (target.campusId = null);
+    console.log("req.body", req.body);
+
+    res.send(await target.update(req.body));
   } catch (ex) {
     next(ex);
   }

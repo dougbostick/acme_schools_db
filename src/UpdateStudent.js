@@ -12,10 +12,10 @@ class UpdateStudent extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log("props", this.props);
+    console.log("Const props", this.props);
   }
   componentDidUpdate(prevProps) {
-    console.log("props", this.props);
+    console.log("CDU props", this.props);
     if (!prevProps.campus && this.props.campus) {
       this.setState({
         firstName: this.props.student.firstName,
@@ -38,7 +38,7 @@ class UpdateStudent extends React.Component {
   }
 
   render() {
-    console.log("state", this.state);
+    console.log(" render state", this.state);
     const { firstName } = this.state;
     const { lastName } = this.state;
     const { email } = this.state;

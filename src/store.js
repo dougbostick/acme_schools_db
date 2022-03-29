@@ -94,15 +94,16 @@ export const updateStudent = (student, history) => {
 };
 
 export const unregister = (student, history) => {
-  return async () => {
+  const id = student.campusId;
+  return async (dispatch) => {
     const response = await axios.put(
       `/api/student/unresgister/${student.id}`,
       student
     );
     const unregistered = response.data;
     console.log("unregistered", unregistered);
-    store.dispatch({ type: "UNREGISTER", unregistered });
-    //history.push(`${campus}`);
+    dispatch({ type: "UNREGISTER", unregistered });
+    // history.push(`/campuses/${id}`);
   };
 };
 const initialState = {

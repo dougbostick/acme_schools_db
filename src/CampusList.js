@@ -27,7 +27,7 @@ class CampusList extends React.Component {
       <div>
         <h1>Campuses</h1>
         {CampusEls}
-        <ConnectedCF />
+        <ConnectedCF campus={this.props.campus} />
       </div>
     );
   }

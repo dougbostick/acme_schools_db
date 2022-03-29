@@ -9,12 +9,12 @@ class UpdateCampus extends React.Component {
       name: this.props.campus ? this.props.campus.name : "",
       address: this.props.campus ? this.props.campus.address : "",
     };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     console.log("props", this.props);
   }
   componentDidUpdate(prevProps) {
-    console.log("props", this.props);
+    console.log("CDU props/ prevProps", this.props, prevProps);
     if (!prevProps.campus && this.props.campus) {
       this.setState({
         name: this.props.campus.name,
@@ -23,11 +23,11 @@ class UpdateCampus extends React.Component {
     }
   }
 
-  handleChange(ev) {
-    this.setState({
-      [ev.target.name]: ev.target.value,
-    });
-  }
+  // handleChange(ev) {
+  //   this.setState({
+  //     [ev.target.name]: ev.target.value,
+  //   });
+  // }
 
   handleSubmit(ev) {
     ev.preventDefault();

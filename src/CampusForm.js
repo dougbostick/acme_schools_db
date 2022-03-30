@@ -14,6 +14,15 @@ class CampusForm extends React.Component {
 
   async create(ev) {
     ev.preventDefault();
+    if (!this.state.campus && !this.state.address) {
+      return alert("Must input a Campus name and address");
+    }
+    if (!this.state.campus) {
+      return alert("Must input a Campus name");
+    }
+    if (!this.state.address) {
+      return alert("Must input a Campus address");
+    }
     this.props.addCampus(this.state.campus, this.state.address);
     this.setState({ campus: "", address: "" });
   }

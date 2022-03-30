@@ -14,6 +14,18 @@ class StudentForm extends React.Component {
   }
 
   async create(ev) {
+    if (!this.state.firstName && !this.state.lastName && !this.state.email) {
+      return alert("Must fill in required fields");
+    }
+    if (!this.state.firstName) {
+      return alert("Must input a Student first name");
+    }
+    if (!this.state.lastName) {
+      return alert("Must input a Student last name");
+    }
+    if (!this.state.email) {
+      return alert("Must input a Student email");
+    }
     ev.preventDefault();
     this.props.addStudent(
       this.state.firstName,

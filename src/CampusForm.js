@@ -33,7 +33,7 @@ class CampusForm extends React.Component {
           value={address}
           onChange={(ev) => this.setState({ address: ev.target.value })}
         />
-        <button>Submit</button>
+        <button className="submit">Submit</button>
       </form>
     );
   }

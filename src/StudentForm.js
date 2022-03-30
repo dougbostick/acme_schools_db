@@ -49,7 +49,7 @@ class StudentForm extends React.Component {
             value={email}
             onChange={(ev) => this.setState({ email: ev.target.value })}
           ></input>
-          <button>Submit</button>
+          <button className="submit">Submit</button>
         </form>
       </div>
     );

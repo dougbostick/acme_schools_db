@@ -11,6 +11,7 @@ class CampusDetails extends React.Component {
       students: [],
     };
   }
+
   async componentDidMount() {
     if (!this.props.loadedCampus) {
       await this.props.fetchCampus();
@@ -41,13 +42,12 @@ class CampusDetails extends React.Component {
     console.log("students", students);
 
     return (
-      <div>
+      <div className="details">
         <h1>Campus Details</h1>
         <img src={campus.imgURL}></img>
         <div>Campus: {campus.name}</div>
         <div>Address: {campus.address}</div>
         <div>{campus.description}</div>
-
         <div>
           Students who attend {campus.name}:
           {students.length > 0 ? (
@@ -57,7 +57,7 @@ class CampusDetails extends React.Component {
                   <div key={student.id}>
                     <Link to={`/students/${student.id}`}>
                       {student.firstName} {student.lastName}
-                    </Link>
+                    </Link>{" "}
                     <button onClick={() => this.unregister(student)}>
                       Unregister
                     </button>

@@ -16,9 +16,14 @@ class CampusList extends React.Component {
     console.log("CL redner state", this.props.state);
     const CampusEls = this.props.campus.map((campus) => {
       return (
-        <div key={campus.id}>
-          <Link to={`campuses/${campus.id}`}>{campus.name}</Link>
-          <button onClick={() => this.props.deleteCampus(campus.id)}>x</button>
+        <div key={campus.id} className="list">
+          <Link to={`campuses/${campus.id}`}>{campus.name}</Link>{" "}
+          <button
+            onClick={() => this.props.deleteCampus(campus.id)}
+            className="delete"
+          >
+            x
+          </button>{" "}
           <Link to={`campuses/${campus.id}/update`}>Update</Link>
         </div>
       );

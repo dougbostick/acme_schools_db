@@ -14,13 +14,16 @@ class StudentList extends React.Component {
     console.log("state", this.props.state);
     const StudentEls = this.props.students.map((student) => {
       return (
-        <div key={student.id}>
+        <div key={student.id} className="list">
           <Link to={`/students/${student.id}`}>
             {student.firstName} {student.lastName}
-          </Link>
-          <button onClick={() => this.props.deleteStudent(student.id)}>
+          </Link>{" "}
+          <button
+            onClick={() => this.props.deleteStudent(student.id)}
+            className="delete"
+          >
             x
-          </button>
+          </button>{" "}
           <Link to={`/students/${student.id}/update`}>Update</Link>
         </div>
       );

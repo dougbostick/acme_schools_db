@@ -103,7 +103,7 @@ export const unregister = (student, history) => {
     const unregistered = response.data;
     console.log("unregistered", unregistered);
     dispatch({ type: "UNREGISTER", unregistered });
-    // history.push(`/campuses/${id}`);
+    history.push(`/campuses`);
   };
 };
 const initialState = {

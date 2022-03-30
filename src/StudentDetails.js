@@ -35,7 +35,7 @@ export class StudentDetails extends React.Component {
     console.log("SD local state", this.state);
 
     return (
-      <div>
+      <div className="details">
         <h1>Student Details</h1>
         <img src={student.imageURL}></img>
         <div>First Name: {student.firstName}</div>

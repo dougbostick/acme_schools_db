@@ -250,6 +250,12 @@ app.put("/api/student/unresgister/:id", async (req, res, next) => {
   }
 });
 
+// const path = require("path");
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../public/error.html"));
+// });
+
 const init = async () => {
   await sequelize.sync({ force: true });
   console.log("syncd");

@@ -1,0 +1,81 @@
+body {
+  display: flex;
+}
+
+.navbar {
+  display: flex;
+  border: 2px blue solid;
+  justify-content: space-around;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+/* .campuslink {
+    margin: 50px;
+  } */
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#root {
+  width: 500px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  padding: 5px;
+  margin: 5px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  margin: 5px;
+  font-size: 1.5rem;
+  font-family: Tahoma;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list a {
+  margin: 10px;
+  padding: 5px;
+}
+
+.details {
+  margin: 10px;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.details div {
+  margin: 15px;
+}
+
+.submit {
+  background-color: rgb(76, 102, 250);
+  font-weight: bold;
+  padding: 10px;
+  font-size: 1.5rem;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete {
+  background-color: red;
+}
